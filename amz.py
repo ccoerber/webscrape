@@ -8,7 +8,6 @@ def getHTMLTree(url):
 
     params= {'User-agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36'}
     response = requests.get(url, headers=params)
-    print response
     tree = etree.HTML(response.content)
     return tree
      
@@ -40,7 +39,7 @@ def printProdInfo(prodid):
     
     outfilename = strprodtitle[0:10] + ' - ' + prodid + '.csv'
     outfile = open(outfilename, 'a')
-    outfile.write(strprice + '|')
+    outfile.write(timeOfReq + '|' + strprice + '\n')
     outfile.close()
 
 if __name__ == "__main__":
